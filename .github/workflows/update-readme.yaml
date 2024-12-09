@@ -1,17 +1,18 @@
 name: Update README with Styled Directory Structure
 
-permission:
-  contents: write
 
 on:
   push:
     branches:
       - main
-
+      
 jobs:
   update-readme:
+    permission:
+      contents: write
+      
     runs-on: ubuntu-latest
-
+          
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
