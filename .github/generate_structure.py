@@ -25,7 +25,7 @@ if __name__ == "__main__":
 
     tree_section_start = content.find("## tree")
     if tree_section_start != -1:
-        content = content[:tree_section_start] + "## tree\n" + "\n".join(output) + content[tree_section_start + 7:]
+        content = content[:tree_section_start] + "## tree\n" + "\n".join(output) + "\n" + content[tree_section_start + 7:]
 
     with open("README.md", "w", encoding="utf-8") as readme:
         readme.write(content)
