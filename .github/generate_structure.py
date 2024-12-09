@@ -2,7 +2,7 @@ import os
 
 def generate_structure(path="src", prefix=""):
     entries = sorted(os.listdir(path))
-    lines = []
+    lines = ["<br>"]
     
     for i, entry in enumerate(entries):
         full_path = os.path.join(path, entry)
