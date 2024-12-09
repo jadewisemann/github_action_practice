@@ -2,7 +2,7 @@ import os
 
 def generate_structure(path="src", prefix=""):
     entries = sorted(os.listdir(path))
-    lines = ["<br>"]
+    lines = []
     
     for i, entry in enumerate(entries):
         full_path = os.path.join(path, entry)
@@ -10,7 +10,9 @@ def generate_structure(path="src", prefix=""):
 
         icon = "📂" if os.path.isdir(full_path) else "📜"
         connector = "┗━ " if is_last else "┣━ "
-        
+
+        if i == 0 and prefix == "":
+            lines.append(f"\n📦 src<br>") 
         lines.append(f"{prefix}{connector}{icon} {entry}<br>")
 
         if os.path.isdir(full_path):
@@ -20,7 +22,7 @@ def generate_structure(path="src", prefix=""):
     return lines
 
 if __name__ == "__main__":
-    output = ["📦 src"] + generate_structure("src")
+    output = generate_structure("src")
 
     with open("README.md", "r", encoding="utf-8") as readme:
         content = readme.read()
