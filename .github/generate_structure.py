@@ -9,7 +9,7 @@ def generate_structure(path="src", prefix=""):
 
         icon = "📂" if os.path.isdir(full_path) else "📜"
         connector = "┗━ " if is_last else "┣━ "
-        lines.append(f"{prefix}{connector}{icon} {entry}")
+        lines.append(f"{prefix}{connector}{icon} {entry}<br>")
 
         if os.path.isdir(full_path):
             next_prefix = prefix + ("    " if is_last else "┃   ")
