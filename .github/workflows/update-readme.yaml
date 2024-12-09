@@ -8,9 +8,9 @@ on:
       
 jobs:
   update-readme:
-    permission:
+    permissions:
       contents: write
-      
+
     runs-on: ubuntu-latest
           
     steps:
