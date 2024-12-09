@@ -1,0 +1,36 @@
+name: Update README with Styled Directory Structure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Create directories
+        run: |
+          mkdir -p src/app/fonts
+          touch src/app/fonts/G
+
+      - name: Generate README.md
+        run: |
+          python3 generate_structure.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Update README with styled directory structure"
+          git push
