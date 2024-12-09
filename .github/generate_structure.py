@@ -19,7 +19,13 @@ def generate_structure(path="src", prefix=""):
 
 if __name__ == "__main__":
     output = ["📦 src"] + generate_structure("src")
-    with open("README.md", "w") as readme:
-        readme.write("# Project Structure\n\n")
-        readme.write("\n".join(output))
-        readme.write("\n")
+
+    with open("README.md", "r", encoding="utf-8") as readme:
+        content = readme.read()
+
+    tree_section_start = content.find("## tree")
+    if tree_section_start != -1:
+        content = content[:tree_section_start] + "## tree\n" + "\n".join(output) + content[tree_section_start + 7:]
+
+    with open("README.md", "w", encoding="utf-8") as readme:
+        readme.write(content)
