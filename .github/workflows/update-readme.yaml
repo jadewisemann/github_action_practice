@@ -25,7 +25,7 @@ jobs:
 
       - name: Generate README.md
         run: |
-          python3 generate_structure.py
+          python3 .github/generate_structure.py
 
       - name: Commit and push changes
         run: |
