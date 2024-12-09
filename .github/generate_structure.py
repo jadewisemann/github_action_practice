@@ -1,4 +1,4 @@
-ref_element = "## folder structure"
+ref_element = "## Folder Structure"
 
 import os
 
@@ -14,7 +14,7 @@ def generate_structure(path="src", prefix=""):
         connector = "┗━ " if is_last else "┣━ "
 
         if i == 0 and prefix == "":
-            lines.append(f"\n📦 src")
+            lines.append(f"📦 src")
         lines.append(f"{prefix}{connector}{icon} {entry}")
 
         if os.path.isdir(full_path):
