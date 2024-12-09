@@ -9,3 +9,13 @@ Currently, two official plugins are available:
 
 
 ## tree
+## Folder Structure
+```
+📦 src
+┣━ 📜 App.css
+┣━ 📜 App.jsx
+┣━ 📂 assets
+┃   ┗━ 📜 react.svg
+┣━ 📜 index.css
+┗━ 📜 main.jsx
+```
