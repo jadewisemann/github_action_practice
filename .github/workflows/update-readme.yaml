@@ -22,10 +22,10 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Create directories
-        run: |
-          mkdir -p src/app/fonts
-          touch src/app/fonts/G
+      # - name: Create directories
+      #   run: |
+      #     mkdir -p src/app/fonts
+      #     touch src/app/fonts/G
 
       - name: Generate README.md
         run: |
