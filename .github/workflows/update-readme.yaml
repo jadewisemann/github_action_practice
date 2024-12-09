@@ -1,5 +1,8 @@
 name: Update README with Styled Directory Structure
 
+permission:
+  contents: write
+
 on:
   push:
     branches:
