@@ -9,17 +9,23 @@ def generate_structure(path="src", prefix=""):
     
     for i, entry in enumerate(entries):
         full_path = os.path.join(path, entry)
+
+        if entry.startswith('.'):
+            continue
+        
         is_last = i == len(entries) - 1
 
-        icon = "📂" if os.path.isdir(full_path) else "📜"
-        connector = "┗━ " if is_last else "┣━ "
-
-        if os.path.isdir(full_path) or os.path.isfile(full_path):
+        if os.path.isdir(full_path):
+            icon = "📂"
+            connector = "┗━ " if is_last else "┣━ "
             lines.append(f"{prefix}{connector}{icon} {entry}")
 
-        if os.path.isdir(full_path):
             next_prefix = prefix + ("    " if is_last else "┃   ")
             lines.extend(generate_structure(full_path, prefix=next_prefix))
+        elif os.path.isfile(full_path):
+            icon = "📜"
+            connector = "┗━ " if is_last else "┣━ "
+            lines.append(f"{prefix}{connector}{icon} {entry}")
 
     return lines
 
