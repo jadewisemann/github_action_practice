@@ -30,9 +30,14 @@ if __name__ == "__main__":
         content = readme.read()
 
     tree_section_start = content.find(ref_element)
-    if tree_section_start != -1:
+    
+    code_block_start = content.find("```", tree_section_start)
+    code_block_end = content.find("```", code_block_start + 3)
+
+    
+    if tree_section_start != -1 and code_block_start == -1:
         content = content[:tree_section_start + len(ref_element)] + "\n" + "```" + "\n" + "\n".join(output) + "\n```" + content[tree_section_start + len(ref_element):]
-    else:
+    elif code_block_start == -1:
         content += "\n" + ref_element + "\n" + "```" + "\n" + "\n".join(output) + "\n```"
 
     with open("README.md", "w", encoding="utf-8") as readme:
